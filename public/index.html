@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>电竞馆包机与外设交接台</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="bolt">⚡</span> <span class="arena">ARENA</span> 包机交接台</div>
+    <div class="clock" id="clock">--:--:--</div>
+    <div class="actor-switch">
+      <button class="actor-btn on" data-actor="前台A" id="actorA">前台A</button>
+      <button class="actor-btn" data-actor="前台B" id="actorB">前台B</button>
+    </div>
+    <button class="reset-btn" id="resetBtn">重置演示数据</button>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab on" data-view="floor">机位平面图</button>
+    <button class="tab" data-view="calendar">包机日历</button>
+    <button class="tab" data-view="orders">订单</button>
+    <button class="tab" data-view="grants">账号授权</button>
+    <button class="tab" data-view="inspections">巡检工单</button>
+    <button class="tab" data-view="peripherals">外设套装</button>
+  </nav>
+
+  <!-- 机位平面图 -->
+  <section class="view on" id="view-floor">
+    <div class="stats" id="stats"></div>
+    <div class="floor-wrap">
+      <div class="zone-title">对战区 · A 区（¥12/小时）</div>
+      <div class="grid" id="gridA"></div>
+      <div class="zone-title">包厢区 · B 区（¥18/小时）</div>
+      <div class="grid zone-b" id="gridB"></div>
+      <div class="legend">
+        <span><i style="background:#2f4b53"></i>空闲</span>
+        <span><i style="background:#19e3ff"></i>使用中</span>
+        <span><i style="background:#ff9f43"></i>维修</span>
+        <span><i style="background:#ff5c5c"></i>网络中断</span>
+        <span><i style="background:#ffd400"></i>已预订</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 包机日历 -->
+  <section class="view" id="view-calendar">
+    <div class="cal-head">
+      <button class="btn ghost" id="calPrev">‹ 前一天</button>
+      <input type="date" id="calDate" style="width:200px" />
+      <button class="btn ghost" id="calNext">后一天 ›</button>
+      <button class="btn yellow" id="newOrderBtn" style="margin-left:auto">＋ 新开包机</button>
+    </div>
+    <div class="card">
+      <div class="timeline" id="calendar"></div>
+    </div>
+  </section>
+
+  <!-- 订单列表 -->
+  <section class="view" id="view-orders">
+    <div class="btn-row" style="margin:0 0 12px">
+      <button class="btn yellow" id="newOrderBtn2">＋ 新开包机</button>
+    </div>
+    <div id="orderList"></div>
+  </section>
+
+  <!-- 账号授权 -->
+  <section class="view" id="view-grants">
+    <div class="card">
+      <h3>授权网关状态</h3>
+      <p class="muted">账号凭据只在有效时段内开放：订单进行中开放，准时关闭；提前下机立即吊销。</p>
+      <div id="grantList"></div>
+    </div>
+  </section>
+
+  <!-- 巡检工单 -->
+  <section class="view" id="view-inspections">
+    <div class="row" style="margin-bottom:12px">
+      <div class="seg" id="inspFilter">
+        <button class="btn small on-green" data-status="">全部</button>
+        <button class="btn small" data-status="PENDING">待处理</button>
+        <button class="btn small" data-status="DONE">已完成</button>
+      </div>
+    </div>
+    <div id="inspList"></div>
+  </section>
+
+  <!-- 外设套装 / 编号实物 -->
+  <section class="view" id="view-peripherals">
+    <div id="kitList"></div>
+  </section>
+
+  <!-- 单层侧滑面板（不使用多层弹窗） -->
+  <div class="drawer-mask" id="drawerMask"></div>
+  <aside class="drawer" id="drawer">
+    <div class="drawer-head">
+      <h2 id="drawerTitle">详情</h2>
+      <button class="drawer-close" id="drawerClose">关闭</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
