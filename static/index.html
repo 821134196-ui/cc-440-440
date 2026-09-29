@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>霓虹电竞馆 · 包机管理台</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">霓虹电竞馆<span class="brand-sub">包机管理台</span></div>
+  <nav id="tabs" class="tabs">
+    <button data-view="floor" class="tab active">机位平面图</button>
+    <button data-view="calendar" class="tab">包机日历</button>
+    <button data-view="grants" class="tab">账号授权</button>
+    <button data-view="kits" class="tab">外设套装</button>
+    <button data-view="inspections" class="tab">巡检工单</button>
+    <button data-view="settlements" class="tab">结账复核</button>
+  </nav>
+  <div id="clock" class="clock">--:--:--</div>
+</header>
+
+<main id="main" class="main"></main>
+
+<!-- 单层操作面板(触控端不使用多层弹窗): 任何时刻只有一个面板 -->
+<div id="sheet-mask" class="sheet-mask hidden">
+  <div id="sheet" class="sheet" role="dialog"></div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
